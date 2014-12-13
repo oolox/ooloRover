@@ -1,0 +1,99 @@
+	<div class="container-fluid">
+      
+      <div class="row">
+	    <div class="col-md-6" style="height:100px">  
+	     <div class="menuBar">
+		    <h3>oolRover v0.3</h3>  
+			
+		  </div>
+		</div>
+		<div class="col-md-6" style="height:100px"> 
+	     <div class="menuBar">
+		    <a class="menuBt" href="#/viewStatus">STATUS</a></li>
+			<a class="menuBt" href="#/viewDrive">DRIVE</a>
+			<div id="heartBeat">{{hbCount}}</div>
+		  </div>
+		</div>
+	  </div>
+	  <div class="row">
+	    
+        <div class="col-md-3"><br>
+		 <div class="menuBar">
+		  <span ng-click="toggleDevice(0)" class="menuBt">
+			<span class="glyphicon glyphicon-certificate"></span> Spot 
+		  </span>
+		  <span class='onOff'>
+			{{devices[0].val}}
+		  </span>
+		 </div><br>
+		  <br>
+		 <div class="menuBar">
+		  <span ng-click="toggleDevice(1)" class="menuBt">
+			<span class="glyphicon glyphicon-transfer"></span> Scan 
+		  </span> 
+		  <span class='onOff'>
+			{{devices[1].val}}
+		  </span>
+		 </div><br>
+		  <br>
+		  
+		  <span ng-click="toggleDevice(2)" class="menuBt">
+			<span class="glyphicon glyphicon-screenshot"></span> Laser
+		  </span> 
+		   <span class='onOff'>
+			{{devices[2].val}}
+		  </span>
+		  <br>
+		  <br>
+		  
+		</div>
+		
+        <div class="col-md-6">
+		<center>
+		<div  id="compass"  
+		ng-mousedown="compassDown($event)" 
+		ng-mouseup='compassUp($event)'
+		ng-mousemove="compassMove($event)" >
+		
+			
+	<svg height="400" width="400">
+	<defs>
+  <linearGradient y2="0.98828" x2="0.00781" y1="0" x1="0" id="svg_fillSquare">
+   <stop stop-color="#eeeeee" offset="0"/>
+   <stop stop-color="#555555" offset="1"/>
+  </linearGradient>
+
+  <radialGradient fy="0.5" fx="0.50391" r="0.5" cy="0.5" cx="0.5" id="svg_fillCircle">
+   <stop stop-color="#777777" offset="0"/>
+   <stop stop-color="#000000" offset="1"/>
+  </radialGradient>
+ </defs>
+ 
+  <rect id="nav_mControl" height="400" width="400" y="0" x="0" stroke-width="5" stroke="#666666" fill="none"/>
+  <circle id="nav_mGlobe" r="180" cy="200" cx="200" stroke-width="4" stroke="#999999" fill="url(#svg_fillCircle)"/>
+ <circle id="nav_mRing3" r="135" cy="200" cx="200" stroke-width="5" stroke-dasharray="8,8" stroke="#888888" fill="none" />
+  <circle id="nav_mRing2" r="90" cy="200" cx="200" stroke-width="4" stroke-dasharray="6,6" stroke="#aaaaaa" fill="none" />
+  <circle id="nav_mRing1" r="45" cy="200" cx="200" stroke-width="3" stroke-dasharray="4,4" stroke="#bbbbbb" fill="none" />
+  <circle id="nav_mRing0" r="15" cy="200" cx="200" stroke-width="2" stroke-dasharray="2,2" stroke="#cccccc" fill="none" />
+  <line id="nav_mVert" y2="185" x2="25" y1="185" x1="375" stroke-width="1" stroke="#cccccc" stroke-dasharray="2,2" fill="none"/>
+  <line id="nav_mVert" y2="215" x2="25" y1="215" x1="375" stroke-width="1" stroke="#cccccc" stroke-dasharray="2,2" fill="none"/>
+  <line id="nav_mHoriz" x2="185" y2="25" x1="185" y1="375" stroke-width="1" stroke="#cccccc" stroke-dasharray="2,2" fill="none"/>
+  <line id="nav_mHoriz" x2="215" y2="25" x1="215" y1="375" stroke-width="1" stroke="#cccccc" stroke-dasharray="2,2" fill="none"/>
+  <circle id="nav_point" r="12.5" cy="200" cx="200" stroke-width="2" stroke="#ffffff" fill-opacity="0.5" fill="#eeeeee" />
+
+	
+	</svg>
+
+	  </div>	
+	  	</center>
+		</div>
+		<div class="col-md-3" style="font-size:75%">
+			<br>
+				{{speedVector}}
+				<br>
+				{{motors[0]}} <br>
+				{{motors[1]}} <br>
+			<br>
+		</div>
+		
+      </div>

@@ -1,0 +1,286 @@
+<div id="viewDrive">
+	<div class="container-fluid" >
+      
+     
+      <div class="row">
+	    <div class="col-md-12 cammeraBar">
+	    	 <div style='position:absolute;top:115px;left:-115px;font-size:58px;color:#660000' class='rotate'>oolRover</div>  
+	    	 <div class="menuBar">
+		   
+				<div id="heartBeat">{{hbCount}}</div>
+		 	 </div>
+		  <div id="oobStatus">NODE</div>
+	    	<center>  
+	  		<object width="480" height="300"><param name="movie" value="https://www.dropcam.com/e/3bd439fb4abc4bcaa1b445c4e9deddf6?autoplay=true"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><param name="wmode" value="opaque"></param><embed src="https://www.dropcam.com/e/3bd439fb4abc4bcaa1b445c4e9deddf6?autoplay=true" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="300" wmode="opaque"></embed></object>
+	  		</center>
+	  	</div>
+	  </div>
+
+
+
+
+	  <div class="row">
+
+		
+        <div class="col-md-6 midCol">
+
+		<center>
+		 <div style='position:relative; width:400px; height:400px; top:25px'>
+
+		 	
+				<div style="color:white;position:absolute;top:147px;right:-30px;width:75px;">
+				 	Heading
+				</div>
+				<div style="background-color:#000;color:white;position:absolute;top:165px;right:-30px;width:75px;padding:1px;font-size:175%">
+					{{sensors[4].val}}
+				</div>
+			
+
+		  <div id='turnRange' ng-click='showTurnRange=!showTurnRange' ng-init='showTurnRange=false'>
+          	<div style="color:white;position:absolute;top:147px;left:-30px;width:75px;">
+          	 	Turn
+          	</div>
+          	<div style="background-color:#000;color:white;position:absolute;top:165px;left:-30px;width:75px;padding:1px;font-size:175%">
+          		{{motors[1].displayVal}}
+          	</div>
+          	<div class='btResizeH'>
+          		<span class="glyphicon glyphicon glyphicon-resize-horizontal" style='padding:0px 5px 0px 5px'></span>
+          	</div>
+
+			<div style="position:absolute;top:217px;left:-30px;width:75px;" ng-show="showTurnRange">
+          	 	Range
+          	</div>
+
+          </div>
+			<div style="background-color:black;color:white;position:absolute;top:235px;left:-30px;width:75px;padding:1px;font-size:175%" 
+          	     ng-show="showTurnRange">
+          		<input type="text" name="input" ng-model="motors[1].range"
+          		 style="background-color:black;color:white;width:3em;border:none;outline:none;text-align:center"
+          		>
+          	</div>
+
+          <div id='speedRange' ng-click='showSpeedRange=!showSpeedRange' ng-init='showSpeedRange=false'>
+          	<div style="color:white;position:absolute;top:-23px;left:160px;width:75px;padding:5px;">
+          	 	Speed
+          	</div>
+          	<div style="background-color:#000;color:white;position:absolute;top:0px;left:160px;width:75px;padding:1px;font-size:175%">
+          		{{motors[0].displayVal}}
+          	</div>
+          	<div class='btResizeV'>
+          		<span class="glyphicon glyphicon glyphicon-resize-vertical" style='padding:0px 5px 0px 5px'></span>
+          	</div>
+          </div>
+
+
+            <div style="color:white;position:absolute;top:-23px;left:260px;width:75px;padding:5px;"  ng-show="showSpeedRange">
+          	 	Range
+          	</div>
+          	<div style="background-color:#000;color:white;position:absolute;top:0px;left:260px;width:75px;padding:1px;font-size:175%"
+          	 	  ng-show="showSpeedRange">
+          		<input type="text" name="input" ng-model="motors[0].range"
+          		 style="background-color:black;color:white;width:3em;border:none;outline:none;text-align:center">
+          	</div>
+
+
+
+
+			<div  id="compass"  
+				ng-mousedown="compassDown($event)" 
+				ng-mouseup='compassUp($event)'
+				ng-mousemove="compassMove($event)" >	
+				<br>	
+				<br>
+				<svg height="300" width="300">
+					
+					<!-- <rect id="nav_mControl" height="300" width="300" y="0" x="0" stroke-width="5" stroke="#666666" fill="none"/> -->
+					<circle id="nav_mGlobe" r="145" cy="150" cx="150" stroke-width="4" stroke="#aaaaaa" fill="black"/>
+					<circle id="nav_mCirc1" r="105" cy="150" cx="150" stroke-dasharray="4,4" stroke-width="1" stroke="#aaaaaa" fill="black"/>
+					<circle id="nav_mCirc1" r="55" cy="150" cx="150" stroke-dasharray="3,3" stroke-width="1" stroke="#aaaaaa" fill="black"/>
+					
+					<circle id="nav_mCenterCirc" r="17" cy="150" cx="150" stroke-width="2" stroke="#999999" stroke-dasharray="2,2" fill="none"/>
+					<line id="nav_mVert" x1="150" y1="20" x2="150" y2="280" stroke-width="1" stroke="#cccccc" stroke-dasharray="2,2" fill="none"/>
+					<line id="nav_mVert" x1="20" y1="150" x2="280" y2="150" stroke-width="1" stroke="#cccccc" stroke-dasharray="2,2" fill="none"/>
+					<circle id="nav_point" r="12.5" cy="150" cx="150" stroke-width="2" stroke="#ffffff" fill-opacity="0.5" fill="#eeeeee" />
+					
+				</svg>
+				
+	  		</div>
+
+	  	  </div>
+	  	
+	  	  
+	  	</center>
+		</div>  
+			     <div class="col-md-6 midCol">
+	     <center>
+	     	
+
+		 <div style='position:relative; width:400px; height:400px; top:25px'>
+		 	<div id="statusIrFront" ng-show='sensors[1].val<sensors[1].trigger'
+		 	     style="color:#660000;border:1px solid #660000; border-radius:1em;background-color:#220000;position:absolute;width:7em;top:100px;right:-50px;padding:0.5em">
+		 	     IR FRONT
+		 	</div>
+		 	<div id="statusIrFront" ng-show='sensors[0].val<sensors[0].trigger'
+		 	     style="color:#660000;border:1px solid #660000; border-radius:1em;background-color:#220000;position:absolute;width:7em;top:220px;right:-50px;padding:0.5em">
+		 	     IR REAR
+		 	</div>
+		 	<div id="statusIrFront" ng-hide='sensors[1].val<sensors[1].trigger'
+		 	     style="color:#ffff00;border:1px solid #ffff00; border-radius:1em;background-color:#aa0000;position:absolute;width:7em;top:100px;right:-50px;padding:0.5em">
+		 	     IR FRONT
+		 	</div>
+		 	<div id="statusIrFront" ng-hide='sensors[0].val<sensors[0].trigger'
+		 	     style="color:#ffff00;border:1px solid #ffff00; border-radius:1em;background-color:#aa0000;position:absolute;width:7em;top:220px;right:-50px;padding:0.5em">
+		 	     IR REAR
+		 	</div>
+		 	<div style="color:white;position:absolute;top:147px;right:-40px;width:75px;">
+          	 	Sonar
+          	</div>
+          	<div style="background-color:#000;color:white;position:absolute;top:165px;right:-40px;width:75px;padding:1px;font-size:175%">
+          		{{sensors[2].val}}
+          	</div>
+		  <div id='panRange' ng-click='showPanRange=!showPanRange' ng-init='showPanRange=false'>
+          	<div style="color:white;position:absolute;top:147px;left:-30px;width:75px;">
+          	 	Pan
+          	</div>
+          	<div style="background-color:#000;color:white;position:absolute;top:165px;left:-30px;width:75px;padding:1px;font-size:175%">
+          		{{motors[2].displayVal}}
+          	</div>
+          	<div class='btResizeH'>
+          		<span class="glyphicon glyphicon glyphicon-resize-horizontal" style='padding:0px 5px 0px 5px'></span>
+          	</div>
+			<div style="position:absolute;top:217px;left:-30px;width:75px;" ng-show="showPanRange">
+          	 	Range
+          	</div>
+
+          </div>
+			<div style="background-color:black;color:white;position:absolute;top:235px;left:-30px;width:75px;padding:1px;font-size:175%" 
+          	     ng-show="showPanRange">
+          		<input type="text" name="input" ng-model="motors[2].range"
+          		 style="background-color:black;color:white;width:3em;border:none;outline:none;text-align:center"
+          		>
+          	</div>
+
+          <div id='tiltRange' ng-click='showTiltRange=!showTiltRange' ng-init='showTiltRange=false'>
+          	<div style="color:white;position:absolute;top:-23px;left:160px;width:75px;padding:5px;">
+          	 	Tilt
+          	</div>
+          	<div style="background-color:#000;color:white;position:absolute;top:0px;left:160px;width:75px;padding:1px;font-size:175%">
+          		{{motors[3].displayVal}}
+          	</div>
+          	<div class='btResizeV'>
+          		<span class="glyphicon glyphicon glyphicon-resize-vertical" style='padding:0px 5px 0px 5px'></span>
+          	</div>
+          </div>
+            <div style="color:white;position:absolute;top:-23px;left:260px;width:75px;padding:5px;"  ng-show="showTiltRange">
+          	 	Range
+          	</div>
+          	<div style="background-color:#000;color:white;position:absolute;top:0px;left:260px;width:75px;padding:1px;font-size:175%"
+          	 	  ng-show="showTiltRange">
+          		<input type="text" name="input" ng-model="motors[3].range"
+          		 style="background-color:black;color:white;width:3em;border:none;outline:none;text-align:center">
+          	</div>
+
+
+
+
+			<div  id="panTilt"  
+				ng-mousedown="panTiltDown($event)" 
+				ng-mouseup='panTiltUp($event)'
+				ng-mousemove="panTiltMove($event)" >	
+				<br>	
+				<br>
+				<svg height="300" width="300">
+					
+					<rect width="300" height="300" stroke-width="4" stroke="#aaaaaa" fill="#000000"/>
+					<circle id="nav_mCenterCirc" r="17" cy="150" cx="150" stroke-width="2" stroke="#999999" stroke-dasharray="2,2" fill="none"/>
+					<line id="nav_mVert" x1="150" y1="20" x2="150" y2="280" stroke-width="1" stroke="#cccccc" stroke-dasharray="2,2" fill="none"/>
+					<line id="nav_mVert" x1="20" y1="150" x2="280" y2="150" stroke-width="1" stroke="#cccccc" stroke-dasharray="2,2" fill="none"/>
+					<circle id="nav_pantilt" r="12.5" cy="150" cx="150" stroke-width="2" stroke="#ffffff" fill-opacity="0.5" fill="#eeeeee" />
+					
+				</svg>
+				
+	  		</div>
+	  		<div>
+
+		  		</div>
+	  	  </div>
+	  	 
+	  	</center>
+
+
+		</div>  
+		
+      </div>
+      <div class="row">
+      	<center>
+		<div class="col-md-12 bottomBar" style="font-size:100%;display: inline;">
+			
+
+			<span style='position:relative;top:20px;left:-10px'
+				 class="iconBt" ng-click="stopMotors()">
+				<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+					<path id="svg_1" d="m1,15.33189l14.33188,-14.33189l20.26863,0l14.33189,14.33189l0,20.26863l-14.33189,14.33186l-20.26863,0l-14.33188,-14.33186l0,-20.26863z" stroke-width="2" stroke="#ffffff" fill="#990000"/>
+					<text transform="matrix(1.5653092861175537,0,0,1.5653092861175537,-3.4978512078523636,-18.160560816526413) " xml:space="preserve" text-anchor="middle" font-family="Fantasy" font-size="12" id="svg_4" y="32.61316" x="18.35276" stroke-linecap="null" stroke-linejoin="null" stroke-width="0" stroke="#aaaaaa" fill="#aaaaaa">STOP</text>
+				</svg>
+  		   </span>
+			<div class="btn-group" role="group">
+			  <button type="button" class="oobBt" ng-click='toggleDevice(0)' ng-style="deviceStyle(0)">
+			  	<span class="glyphicon glyphicon-certificate" style='padding:0px 5px 0px 5px'></span>
+			  	Laser<br>
+			  	 <span class='oobReadout' >
+			  	   {{devices[0].val}}
+			  	 </span>
+			  </button>
+			 <button type="button" class="oobBt" ng-click='toggleDevice(1)' ng-style="deviceStyle(1)">
+			  	<span class="glyphicon glyphicon-screenshot" style='padding:0px 5px 0px 5px'></span>
+			  	Spot<br>
+			  	 <span class='oobReadout' >
+			  	   {{devices[1].val}}
+			  	 </span>
+			  </button>
+			  <button type="button" class="oobBt" ng-click='toggleDevice(2)' ng-style="deviceStyle(2)">
+			  	
+			  	 <span class="glyphicon glyphicon-transfer" style='padding:0px 5px 0px 5px'></span>
+			  	Scan<br>
+			  	 <span class='oobReadout' >
+			  	   {{devices[2].val}}
+			  	 </span>
+			  </button>
+			  <button  class="oobBt" class="oobBt" ng-click='makeBeep()'>
+			  		<span class="glyphicon glyphicon-volume-up" style='padding:0px 5px 0px 5px'></span>
+			  	Beep<br>
+			  	 <span class='oobReadout' >
+			  	   {{beepVal}}
+			  	 </span>
+			  </button>
+
+
+			</div>
+
+			
+
+
+			
+  		   <span  style='position:relative;top:20px;left:10px'
+			     class="iconBt" ng-click="centerPanTilt()">
+				<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+					<circle id="svg_7" r="24" cy="25" cx="25" stroke-linecap="null" stroke-linejoin="null" stroke-width="1" stroke="#cccccc" fill="#7f0000"/>
+					<path id="svg_9" d="m37.67115,73.05824c0.00138,-0.17376 -0.00089,-0.34775 0.01139,-0.5212c0.30164,0.05705 0.59972,0.15042 0.89627,0.23438c0.01592,-0.0852 0.00843,-0.15588 0.02226,-0.23465c0.19052,0.16576 0.37932,0.33389 0.56039,0.51002c-0.17371,0.19979 -0.37297,0.3733 -0.56858,0.55096c-0.00633,-0.08274 -0.01267,-0.16547 -0.019,-0.24821c-0.28831,0.08005 -0.5932,0.1628 -0.88337,0.23598c-0.01973,-0.16885 -0.01915,-0.35274 -0.01934,-0.52728z" stroke-linecap="null" stroke-linejoin="null" stroke="#ffffff" fill="#cccccc"/>
+					<g id="svg_12">
+					<path id="svg_8" d="m5.65318,25.65219c0.01521,-1.90869 -0.00973,-3.82006 0.12512,-5.72556c3.31352,0.62675 6.58795,1.65245 9.84556,2.57462c0.17492,-0.93589 0.0926,-1.71219 0.24457,-2.57755c2.09286,1.821 4.1669,3.66779 6.15585,5.60246c-1.9082,2.19474 -4.09706,4.10075 -6.24592,6.05255c-0.06958,-0.90903 -0.13921,-1.81778 -0.20877,-2.72685c-3.1671,0.8793 -6.51631,1.78862 -9.70389,2.59232c-0.21675,-1.85482 -0.21037,-3.87476 -0.21251,-5.79201l0,0z" stroke-linecap="null" stroke-linejoin="null" stroke="#ffffff" fill="#cccccc"/>
+					<path transform="rotate(-180 36.45682907104492,25.12821769714355) " id="svg_11" d="m28.27129,25.02919c0.01521,-1.90868 -0.00973,-3.82006 0.12512,-5.72555c3.31352,0.62675 6.58795,1.65245 9.84555,2.57462c0.17492,-0.93588 0.09261,-1.71219 0.24457,-2.57755c2.09286,1.821 4.1669,3.66779 6.15585,5.60246c-1.9082,2.19474 -4.09705,4.10076 -6.24592,6.05255c-0.06958,-0.90902 -0.1392,-1.81778 -0.20877,-2.72684c-3.1671,0.87929 -6.5163,1.78862 -9.70388,2.59232c-0.21675,-1.85482 -0.21037,-3.87476 -0.21251,-5.79201l0,0z" stroke-linecap="null" stroke-linejoin="null" stroke="none" fill="#cccccc"/>
+					</g>
+					<g transform="rotate(-90 25.268026351928714,25.128217697143555) " id="svg_13">
+					<path id="svg_14" d="m5.77343,25.34069c0.01521,-1.90868 -0.00973,-3.82006 0.12512,-5.72555c3.31352,0.62675 6.58795,1.65245 9.84555,2.57462c0.17492,-0.93589 0.09261,-1.71219 0.24457,-2.57755c2.09286,1.821 4.1669,3.66779 6.15585,5.60246c-1.9082,2.19474 -4.09706,4.10075 -6.24592,6.05255c-0.06958,-0.90903 -0.13921,-1.81778 -0.20877,-2.72684c-3.16711,0.87929 -6.51631,1.78862 -9.70389,2.59232c-0.21675,-1.85482 -0.21037,-3.87476 -0.21251,-5.79201l0,0z" stroke-linecap="null" stroke-linejoin="null" stroke="none" fill="#cccccc"/>
+					<path id="svg_15" transform="rotate(-180 36.57707977294922,24.816717147827145) " d="m28.39154,24.71769c0.01521,-1.90868 -0.00973,-3.82006 0.12512,-5.72555c3.31352,0.62675 6.58795,1.65245 9.84555,2.57462c0.17492,-0.93587 0.0926,-1.71219 0.24457,-2.57755c2.09285,1.821 4.1669,3.66779 6.15584,5.60246c-1.90819,2.19474 -4.09705,4.10076 -6.24592,6.05255c-0.06957,-0.90902 -0.1392,-1.81778 -0.20877,-2.72684c-3.1671,0.87929 -6.5163,1.78862 -9.70388,2.59232c-0.21675,-1.85482 -0.21037,-3.87476 -0.21251,-5.79201l0,0z" stroke-linecap="null" stroke-linejoin="null" stroke="none" fill="#cccccc"/>		
+				</svg>
+			</span>
+			
+			
+		</div>
+		
+		</center>
+	  </div>
+	  
+	</div>
+</div>
